@@ -15,4 +15,56 @@
 	<url-pattern>/reguser</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>loginUser</servlet-name>
+ 	<servlet-class>servlet.loginUser</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>loginUser</servlet-name>
+	<url-pattern>/loguser</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>allUsers</servlet-name>
+ 	<servlet-class>servlet.allUsers</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>allUsers</servlet-name>
+	<url-pattern>/allusers</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>updateUsers</servlet-name>
+ 	<servlet-class>servlet.updateUsers</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>updateUsers</servlet-name>
+	<url-pattern>/updateuser</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>editUser</servlet-name>
+ 	<servlet-class>servlet.editUser</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>editUser</servlet-name>
+	<url-pattern>/edituser</url-pattern>
+
+</servlet-mapping>
 </web-app>

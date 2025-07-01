@@ -53,9 +53,18 @@
               <button type="submit" class="btn btn-success w-100">Register</button>
               
             </form>
-          </div>
+            </div>
+							            
+			<% if (request.getAttribute("error") != null) { %>
+			  <div class="d-flex justify-content-center">
+			    <div class="alert alert-danger w-50 text-center">
+			      <%= request.getAttribute("error") %>
+			    </div>
+			  </div>
+			<% } %>
+			
           <div class="card-footer text-center">
-            <small>Already registered? <a href="login.html">Login here</a></small>
+            <small>Already registered? <a href="userLogin.jsp">Login here</a></small>
           </div>
         </div>
       </div>

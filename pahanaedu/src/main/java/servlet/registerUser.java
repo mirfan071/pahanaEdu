@@ -33,6 +33,39 @@ public class registerUser extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		String fullname = request.getParameter("fullname");
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String confirm = request.getParameter("confirm");
+		String role = request.getParameter("role");
+
+		// Check if passwords match
+		
+		if (!password.equals(confirm)) {
+		    request.setAttribute("error", "Passwords do not match.");
+		    request.getRequestDispatcher("registerUser.jsp").forward(request, response);
+		    return;
+		}
+
+		// Check if email already exists
+		
+		userService service = new userService();
+		if (service.emailExists(email)) {
+		    request.setAttribute("error", "Email already registered.");
+		    request.getRequestDispatcher("registerUser.jsp").forward(request, response);
+		    return;
+		}
+		
+		// Check if username already exists
+		
+		userService serviceUser = new userService();
+		if (serviceUser.userNameExists(username)) {
+		    request.setAttribute("error", "User Name already registered.");
+		    request.getRequestDispatcher("registerUser.jsp").forward(request, response);
+		    return;
+		}
 		// Fill the User object
        user user = new user();
                 
@@ -43,9 +76,8 @@ public class registerUser extends HttpServlet {
 	   user.setRole(request.getParameter("role"));
 	   	   
 
-	   
-	    userService service = new userService();
-		service.regUser(user);
+	   	    userService service1 = new userService();
+		service1.regUser(user);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");  
 		
