@@ -80,4 +80,17 @@
 	<url-pattern>/deluser</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>addCustomer</servlet-name>
+ 	<servlet-class>servlet.addCustomer</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>addCustomer</servlet-name>
+	<url-pattern>/addcustomer</url-pattern>
+
+</servlet-mapping>
 </web-app>
