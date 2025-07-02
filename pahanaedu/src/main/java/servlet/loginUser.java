@@ -37,26 +37,35 @@ public class loginUser extends HttpServlet {
 		String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        userService service = new userService();
-        user loggedUser = service.loginUser(username, password);
-
-        if (loggedUser != null) {
+        if(username.equals("admin") && password.equals("admin1")) {
         	
-            // Login success: create session
-            HttpSession session = request.getSession();
-            session.setAttribute("user", loggedUser);
-            response.sendRedirect("mainInterface.jsp");
-            
-        } else {
-        	
-            // Login failed: show error message
-            request.setAttribute("error", "Invalid email or password.");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("userLogin.jsp");
-            dispatcher.forward(request, response);
-            
-        }
-			
+        	HttpSession session = request.getSession();
+            session.setAttribute("admin", "admin");
+            response.sendRedirect("adminPanel.jsp"); // or forward if preferred
+            return;
+      	  
+        }else {	
+	      	  
+	        userService service = new userService();
+	        user loggedUser = service.loginUser(username, password);
 	
+		        if (loggedUser != null) {
+		        	
+		            // Login success: create session
+		            HttpSession session = request.getSession();
+		            session.setAttribute("user", loggedUser);
+		            response.sendRedirect("mainInterface.jsp");
+		            
+		        } else {
+		        	
+		            // Login failed: show error message
+		            request.setAttribute("error", "Invalid email or password.");
+		            RequestDispatcher dispatcher = request.getRequestDispatcher("userLogin.jsp");
+		            dispatcher.forward(request, response);
+		            		           
+		        }
+        }        
+		
 	}
 
 }

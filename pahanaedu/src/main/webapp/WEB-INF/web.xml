@@ -67,4 +67,17 @@
 	<url-pattern>/edituser</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>deleteUser</servlet-name>
+ 	<servlet-class>servlet.deleteUser</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>deleteUser</servlet-name>
+	<url-pattern>/deluser</url-pattern>
+
+</servlet-mapping>
 </web-app>

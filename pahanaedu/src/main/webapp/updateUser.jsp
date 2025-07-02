@@ -43,7 +43,7 @@
         </div>
 
         <button type="submit" class="btn btn-success">Update</button>
-        <a href="AllUsersServlet" class="btn btn-secondary">Cancel</a>
+        <a href="allUsers" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

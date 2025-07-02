@@ -7,6 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+
 <div class="container mt-5">
     <h2 class="mb-4">User List</h2>
     <table class="table table-bordered table-hover">
@@ -21,6 +23,7 @@
             </tr>
         </thead>
         <tbody>
+        
 			<%
 			    List<user> users = (List<user>) request.getAttribute("users");
 			    if (users != null && !users.isEmpty()) {
@@ -55,6 +58,8 @@
 
         </tbody>
     </table>
+    
+    <div><a href=adminPanel.jsp><button class="btn btn-primary btn-lg"> Back to Admin Panel	</button></a></div>
 </div>
 </body>
 </html>

@@ -47,6 +47,7 @@
                   
                   <option value="Cashier">Cashier</option>
                   <option value="Manager">Manager</option>
+             
                 </select>
               </div>
               

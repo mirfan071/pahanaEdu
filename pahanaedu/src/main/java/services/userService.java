@@ -154,6 +154,8 @@ public boolean userNameExists(String userName) {
 	            } else {
 	                System.out.println("Password does not match.");
 	            }
+	            
+	            
 	        } else {
 	            System.out.println("No user found with that email.");
 	        }
@@ -291,7 +293,32 @@ public boolean userNameExists(String userName) {
 	    return u;
 	}
 
- }
+   public void deleteUser(int id) {
+	   
+	   Connection conn = null;
+	   PreparedStatement ps = null;
+
+	  
+	   try {
+	       conn = DBConnect.getConnection();
+	       String sql = "DELETE FROM users WHERE id = ?";
+	       ps = conn.prepareStatement(sql);
+	       ps.setInt(1, id);
+	       ps.executeUpdate();
+	   } catch (Exception e) {
+	       e.printStackTrace();
+	   } finally {
+	       try {
+	           if (ps != null) ps.close();
+	           if (conn != null) conn.close();
+	       } catch (Exception e) {
+	           e.printStackTrace();
+	       }
+	   }
+	   }
+   
+   
+}
 
 
 

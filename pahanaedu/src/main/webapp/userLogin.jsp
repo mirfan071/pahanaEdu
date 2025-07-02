@@ -38,7 +38,7 @@
           </div>
           
           <% if (request.getAttribute("error") != null) { %>
-			  <div class="d-flex justify-content-center">
+			  <div class="d-flex justify-content-center">	
 			    <div class="alert alert-danger w-50 text-center">
 			      <%= request.getAttribute("error") %>
 			    </div>
