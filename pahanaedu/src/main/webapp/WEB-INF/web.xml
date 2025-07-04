@@ -158,5 +158,30 @@
 	<url-pattern>/searcustomer</url-pattern>
 
 </servlet-mapping>
+<servlet>
+ 	<servlet-name>allBooks</servlet-name>
+ 	<servlet-class>servlet.allBooks</servlet-class>
+ 
+ </servlet>
 
+<servlet-mapping>
+
+	<servlet-name>allBooks</servlet-name>
+	<url-pattern>/allbooks</url-pattern>
+
+</servlet-mapping>
+
+
+<servlet>
+ 	<servlet-name>addBook</servlet-name>
+ 	<servlet-class>servlet.addBook</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>addBook</servlet-name>
+	<url-pattern>/addbook</url-pattern>
+
+</servlet-mapping>
 </web-app>

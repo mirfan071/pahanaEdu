@@ -50,7 +50,10 @@
             <th>Address</th>
             <th>Telephone</th>
             <th>Email</th>
-            <th>Actions</th>
+            <% if (!"Cashier".equalsIgnoreCase(role)) { %>
+             <th>Actions</th>
+            <% } %>
+            
         </tr>
         </thead>
 		<tbody>
@@ -78,11 +81,15 @@
 					%>
 				<td><%= formattedTel %></td>
 			    <td><%= c.getEmail() %></td>
-			    <td>
+			   
+			     <% if (!"Cashier".equalsIgnoreCase(role)) { %>
+			      <td>
 			        <a href="editCustomer?id=<%= c.getAccountNumber() %>" class="btn btn-warning btn-sm">Edit</a>
 			        <a href="deleteCustomer?id=<%= c.getId() %>" class="btn btn-danger btn-sm"
 			           onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
-			    </td>
+			   	 </td>
+			     <% } %>
+			     
 			</tr>
 			<%
 			        }
@@ -98,10 +105,13 @@
 			%>
 			</tbody>
 			</table>
+			
 			<% if (customers1 != null) { %>
+			
 			    <div class="mt-3 text-start">
 			        <strong>Total Customers: <%= customers1.size() %></strong>
 			    </div>
+			    
 			<% } %>
 			
 				<div class="text-center mt-3">
@@ -111,6 +121,6 @@
 				</div>
 							
 			</div>
+		</body>
 			
-		
-		</html>
+	</html>
