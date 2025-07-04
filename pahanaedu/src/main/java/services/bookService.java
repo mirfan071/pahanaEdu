@@ -141,6 +141,56 @@ public class bookService {
 	    return books;
 	}
 
+	// Get a book by ID
+	public book getBookById(int id) {
+	    book b = null;
+	    try (Connection conn = DBConnect.getConnection();
+	         PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE id = ?")) {
+	        ps.setInt(1, id);
+	        ResultSet rs = ps.executeQuery();
+	        if (rs.next()) {
+	            b = new book();
+	            b.setId(rs.getInt("id"));
+	            b.setTitle(rs.getString("title"));
+	            b.setCategory(rs.getString("category"));
+	            b.setAuthor(rs.getString("author"));
+	            b.setLanguage(rs.getString("language"));
+	            b.setPrice(rs.getDouble("price"));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return b;
+	}
 
+	// Update a book
+	public boolean updateBook(book b) {
+	    try (Connection conn = DBConnect.getConnection();
+	         PreparedStatement ps = conn.prepareStatement(
+	             "UPDATE books SET title=?, category=?, author=?, language=?, price=? WHERE id=?")) {
+	        ps.setString(1, b.getTitle());
+	        ps.setString(2, b.getCategory());
+	        ps.setString(3, b.getAuthor());
+	        ps.setString(4, b.getLanguage());
+	        ps.setDouble(5, b.getPrice());
+	        ps.setInt(6, b.getId());
+	        return ps.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 
+	public boolean deleteBook(int id) {
+	    try (Connection conn = DBConnect.getConnection();
+	         PreparedStatement ps = conn.prepareStatement("DELETE FROM books WHERE id = ?")) {
+	        ps.setInt(1, id);
+	        return ps.executeUpdate() > 0;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+
+	
 }

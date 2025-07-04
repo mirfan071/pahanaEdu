@@ -184,4 +184,30 @@
 	<url-pattern>/addbook</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>editBook</servlet-name>
+ 	<servlet-class>servlet.editBook</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>editBook</servlet-name>
+	<url-pattern>/editbook</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>deleteBook</servlet-name>
+ 	<servlet-class>servlet.deleteBook</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>deleteBook</servlet-name>
+	<url-pattern>/dltbook</url-pattern>
+
+</servlet-mapping>
 </web-app>
