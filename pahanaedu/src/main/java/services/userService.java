@@ -183,7 +183,7 @@ public boolean userNameExists(String userName) {
 	    Connection conn = null;
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
-
+//
 	    try {
 	        conn = DBConnect.getConnection();
 	        String sql = "SELECT * FROM users";

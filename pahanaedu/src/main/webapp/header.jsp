@@ -4,14 +4,16 @@
 
 <%
     model.user u = (model.user) session.getAttribute("user");
+
+if (u == null) {
+    response.sendRedirect("userLogin.jsp");
+    return;
+}
     String username = u.getUsername();
     String role = u.getRole();
-
-    if (username == null) {
-        response.sendRedirect("userLogin.jsp");
-        return;
-    }
-%>
+	  
+    
+  %>
 
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +23,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
   <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="images/logo.png" alt="Logo">
+      <img src="images/logo.png" alt="Logo" style="height: 60px; width: auto;" class="me-2">
       Pahana Edu Book Shop
     </a>
 
@@ -40,7 +42,7 @@
           <ul class="dropdown-menu" aria-labelledby="customerDropdown">
             <li><a class="dropdown-item" href="addCustomer.jsp">Add Customer</a></li>
             <% if (!"Cashier".equalsIgnoreCase(role)) { %>
-              <li><a class="dropdown-item" href="displayCustomers.jsp">Edit Customer</a></li>
+              <li><a class="dropdown-item" href="allCustomers">View All Customers</a></li>
             <% } %>
           </ul>
         </li>

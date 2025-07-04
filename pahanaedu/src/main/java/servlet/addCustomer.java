@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.customer;
 import services.customerService;
+import services.userService;
 
 
 @WebServlet("/addCustomer")
@@ -37,9 +38,21 @@ public class addCustomer extends HttpServlet {
 	    String telephone = request.getParameter("telephone");
 	    String email = request.getParameter("email");
 
-	    customerService service = new customerService();
-	    String accountNumber = service.generateNextAccountNumber();
-
+	
+	    
+	   customerService service = new customerService();
+	   
+	   
+	   // checking email exists
+	   
+	   if (service.emailExists(email)) {
+		    request.setAttribute("error", "The Email that you have entered is already registered. Please re-check the Email address.");
+		    request.getRequestDispatcher("addCustomer.jsp").forward(request, response);
+		     return;
+		}
+	   
+	   String accountNumber = service.generateNextAccountNumber();
+	   
 	    customer c = new customer();
 	    c.setAccountNumber(accountNumber);
 	    c.setName(name);
@@ -48,15 +61,19 @@ public class addCustomer extends HttpServlet {
 	    c.setEmail(email);
 
 	    boolean success = service.addCustomer(c);
+	    
+			
+		
+		 if (success) {
+		        // Store message in session and redirect to avoid resubmission
+		        request.getSession().setAttribute("message", "Customer added successfully.");
+		        response.sendRedirect("addCustomer.jsp");
+		    } else {
+		        request.setAttribute("error", "Error adding customer.");
+		        request.getRequestDispatcher("addCustomer.jsp").forward(request, response);
+		    }
 
-	    if (success) {
-	        request.setAttribute("message", "Customer added successfully.");
-	    } else {
-	        request.setAttribute("error", "Error adding customer.");
-	    }
-
-	    RequestDispatcher rd = request.getRequestDispatcher("addCustomer.jsp");
-	    rd.forward(request, response);
+	   
 	}
 	
 }

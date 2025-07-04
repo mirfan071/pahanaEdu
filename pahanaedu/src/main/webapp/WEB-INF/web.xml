@@ -93,4 +93,70 @@
 	<url-pattern>/addcustomer</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>allCustomers</servlet-name>
+ 	<servlet-class>servlet.allCustomers</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>allCustomers</servlet-name>
+	<url-pattern>/allcustomer</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>updateCustomer</servlet-name>
+ 	<servlet-class>servlet.updateCustomer</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>updateCustomer</servlet-name>
+	<url-pattern>/updcustomer</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>deleteCustomer</servlet-name>
+ 	<servlet-class>servlet.deleteCustomer</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>deleteCustomer</servlet-name>
+	<url-pattern>/delcustomer</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>editCustomer</servlet-name>
+ 	<servlet-class>servlet.editCustomer</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>editCustomer</servlet-name>
+	<url-pattern>/edcustomer</url-pattern>
+
+</servlet-mapping>
+
+<servlet>
+ 	<servlet-name>searchCustomer</servlet-name>
+ 	<servlet-class>servlet.searchCustomer</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>searchCustomer</servlet-name>
+	<url-pattern>/searcustomer</url-pattern>
+
+</servlet-mapping>
+
 </web-app>
