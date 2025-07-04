@@ -104,6 +104,13 @@
 			    </div>
 			<% } %>
 			
+				<div class="text-center mt-3">
+				  <form action="allCustomers" method="get" class="d-inline">
+				    	<button type="submit" class="btn btn-warning btn-sm">View All Customers</button>
+				  </form>
+				</div>
+							
 			</div>
 			
+		
 		</html>
