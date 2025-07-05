@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main User Interface</title>
 </head>
 <body>
 
-<h1>Bill Interface</h1>
+<h1>User Interface</h1>
 
 </body>
 </html>

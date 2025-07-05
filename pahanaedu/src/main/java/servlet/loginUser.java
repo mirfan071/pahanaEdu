@@ -59,7 +59,7 @@ public class loginUser extends HttpServlet {
 		        } else {
 		        	
 		            // Login failed: show error message
-		            request.setAttribute("error", "Invalid email or password.");
+		            request.setAttribute("error", "Invalid Username or Password.");
 		            RequestDispatcher dispatcher = request.getRequestDispatcher("userLogin.jsp");
 		            dispatcher.forward(request, response);
 		            		           
