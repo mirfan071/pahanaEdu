@@ -77,6 +77,7 @@
             <div class="col-md-6 offset-md-6">
                 <label class="form-label">Grand Total (LKR)</label>
                 <input type="text" id="grandTotal" name="grandTotal" class="form-control text-end fw-bold bg-light" readonly>
+                <input type="hidden" id="grandTotal" name="user" value="<%=username%>">
             </div>
         </div>
 

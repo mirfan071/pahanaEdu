@@ -223,4 +223,17 @@
 	<url-pattern>/addbill</url-pattern>
 
 </servlet-mapping>
+
+<servlet>
+ 	<servlet-name>viewSales</servlet-name>
+ 	<servlet-class>servlet.viewSales</servlet-class>
+ 
+ </servlet>
+
+<servlet-mapping>
+
+	<servlet-name>viewSales</servlet-name>
+	<url-pattern>/viewsales</url-pattern>
+
+</servlet-mapping>
 </web-app>

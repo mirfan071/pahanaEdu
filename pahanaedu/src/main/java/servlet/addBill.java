@@ -62,6 +62,7 @@ public class addBill extends HttpServlet {
             String qtyStr = request.getParameter("qty" + i);
             String unitPriceStr = request.getParameter("unitPrice" + i);
             String totalStr = request.getParameter("bookTotal" + i);
+            
 
             if (bookId != null && !bookId.isEmpty() && qtyStr != null && !qtyStr.isEmpty()) {
                 // Get book title from DB (optional, or include it in a hidden field in form)
@@ -84,13 +85,15 @@ public class addBill extends HttpServlet {
 
         // Save to billing table
         try (Connection conn = DBConnect.getConnection()) {
-            String sql = "INSERT INTO billing (customer_account_number, customer_name, books_purchased, total_amount, bill_date) VALUES (?, ?, ?, ?, ?)";
+        	String user =request.getParameter("user");
+            String sql = "INSERT INTO billing (customer_account_number, customer_name, books_purchased, total_amount, bill_date,Generated_by) VALUES (?, ?, ?, ?, ?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, accountNumber);
             ps.setString(2, getCustomerNameByAccount(accountNumber));
             ps.setString(3, itemsSummary.toString().replaceAll(", $", ""));
             ps.setDouble(4, totalAmount);
             ps.setTimestamp(5, now);
+            ps.setString(6, user);
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,7 +123,9 @@ public class addBill extends HttpServlet {
             int id = Integer.parseInt(idStr);
             bookService service = new bookService();
             for (book b : service.getAllBooks()) {
-                if (b.getId() == id) return b.getTitle();
+                if (b.getId() == id) 
+                
+               return b.getTitle();
             }
         } catch (Exception e) {
             return "Unknown Book";

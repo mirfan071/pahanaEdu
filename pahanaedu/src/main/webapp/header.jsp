@@ -61,7 +61,7 @@ if (u == null) {
           </a>
           <ul class="dropdown-menu" aria-labelledby="customerDropdown">
             <li><a class="dropdown-item text-black" href="addBill">Add New Bill</a></li>
-            <li><a class="dropdown-item text-black" href="allBills">View All Bills</a></li>
+            <li><a class="dropdown-item text-black" href="viewSales">View Sales</a></li>
           </ul>
         </li>
         
