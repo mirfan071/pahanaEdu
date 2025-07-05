@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.book;
 import services.bookService;
+import services.userService;
 
 
 @WebServlet("/addBook")
@@ -46,7 +47,15 @@ public class addBook extends HttpServlet {
             request.getRequestDispatcher("addBook.jsp").forward(request, response);
             return;
         }
-
+        
+        // Check if book already exists
+		
+		bookService servicebook = new bookService();
+		if (servicebook.bookExists(title)) {
+		    request.setAttribute("error", "This book already added.");
+		    request.getRequestDispatcher("addBook.jsp").forward(request, response);
+		    return;
+		}
       
         book b = new book();
         b.setTitle(title);

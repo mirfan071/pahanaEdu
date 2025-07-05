@@ -25,18 +25,22 @@ public class allBooks extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 String query = request.getParameter("query");
-	        String category = request.getParameter("category");
+			String query = request.getParameter("query");
+			String language = request.getParameter("language");
+	      
+	       
+	     
 
 	        bookService service = new bookService();
 	        List<book> books;
 
-	        if ((query != null && !query.trim().isEmpty()) || (category != null && !category.trim().isEmpty())) {
-	            books = service.searchBooks(query, category);
+	        if ((query != null && !query.trim().isEmpty())) {
+	            books = service.searchBooks(query,language);
+	          
 	        } else {
 	            books = service.getAllBooks();
 	        }
-
+	       
 	        request.setAttribute("books", books);
 	        request.getRequestDispatcher("allBooks.jsp").forward(request, response);
 	}

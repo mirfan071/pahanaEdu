@@ -13,21 +13,11 @@
  <h2 class="bg-primary text-white text-center p-3 rounded">Books List</h2>
  
  <form method="get" action="allBooks" class="row g-3 mb-4">
+ 
     <div class="col-md-4">
-        <input type="text" class="form-control" name="query" placeholder="Search by title, author, category">
+        <input type="text" class="form-control" name="query" placeholder="Search by title, author, catergory, language">
     </div>
-    
-     <div class="col-md-4">
-        <select name="category" class="form-select">
-            <option value="">-- Filter by Categories --</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Novel">Novel</option>
-            <option value="Biography">Biography</option>
-            <option value="History">History</option>
-            <option value="Education">Education</option>
-        </select>
-    </div>
-    
+      
     <div class="col-md-2">
         <button type="submit" class="btn btn-warning w-100">Search</button>
     </div>

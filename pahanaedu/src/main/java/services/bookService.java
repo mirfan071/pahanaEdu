@@ -15,7 +15,7 @@ public class bookService {
 	
 	public List<book> getAllBooks() {
 	    List<book> list = new ArrayList<>();
-	    String sql = "SELECT * FROM books";
+	    String sql = "SELECT * FROM books ORDER BY title ASC";
 	    try (Connection conn = DBConnect.getConnection();
 	         PreparedStatement ps = conn.prepareStatement(sql);
 	         ResultSet rs = ps.executeQuery()) {
@@ -88,34 +88,65 @@ public class bookService {
 	    }
 	}
 	
-	public List<book> searchBooks(String query, String category) {
-	    List<book> books = new ArrayList<>();
+	public boolean bookExists(String bookName) {
 	    Connection conn = null;
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
 
 	    try {
 	        conn = DBConnect.getConnection();
+	        String sql = "SELECT id FROM books WHERE title = ?";
+	        ps = conn.prepareStatement(sql);
+	        ps.setString(1, bookName);
+	        rs = ps.executeQuery();
+	        return rs.next();  // true if a row is returned
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false;
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conn != null) conn.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+	
+	public List<book> searchBooks(String query,String language) {
+		
+		
+	    List<book> books = new ArrayList<>();
+	    Connection conn = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+
+	    try {
+	    	
+	        conn = DBConnect.getConnection();
+	        
 	        StringBuilder sql = new StringBuilder("SELECT * FROM books WHERE 1=1");
-
+	        
+	        	     
 	        if (query != null && !query.trim().isEmpty()) {
-	            sql.append(" AND (LOWER(title) LIKE ? OR LOWER(author) LIKE ?)");
-	        }
-	        if (category != null && !category.trim().isEmpty()) {
-	            sql.append(" AND LOWER(category) = ?");
-	        }
-
+	        	sql.append(" AND (LOWER(title) LIKE ? OR LOWER(author) LIKE ? OR LOWER(category) LIKE ? OR LOWER(language) LIKE ?)");
+	        	}
+	        	   
+	       	     
+	  	        
 	        ps = conn.prepareStatement(sql.toString());
-
+	      
 	        int paramIndex = 1;
 	        if (query != null && !query.trim().isEmpty()) {
-	            ps.setString(paramIndex++, "%" + query.toLowerCase() + "%");
-	            ps.setString(paramIndex++, "%" + query.toLowerCase() + "%");
-	        }
-	        if (category != null && !category.trim().isEmpty()) {
-	            ps.setString(paramIndex++, category.toLowerCase());
+	            String q = "%" + query.toLowerCase() + "%";
+	            ps.setString(paramIndex++, q); // title
+	            ps.setString(paramIndex++, q); // author
+	            ps.setString(paramIndex++, q); // category
+	            ps.setString(paramIndex++, q); // language
 	        }
 
+	       
 	        rs = ps.executeQuery();
 	        while (rs.next()) {
 	            book b = new book();
@@ -127,7 +158,7 @@ public class bookService {
 	            b.setPrice(rs.getDouble("price"));
 	            books.add(b);
 	        }
-	    } catch (Exception e) {
+	    } catch (Exception e) {	
 	        e.printStackTrace();
 	    } finally {
 	        try {

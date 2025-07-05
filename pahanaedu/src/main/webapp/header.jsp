@@ -47,7 +47,7 @@ if (u == null) {
  <!-- Books Maintain Menu -->
 		<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="customerDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Books Maintain
+            Maintain Books
           </a>
           <ul class="dropdown-menu" aria-labelledby="customerDropdown">
             <li><a class="dropdown-item" href="addBook.jsp">Add Books</a></li>
