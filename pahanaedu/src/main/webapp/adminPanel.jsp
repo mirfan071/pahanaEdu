@@ -73,11 +73,17 @@
 
   <form action="allUsers" method="get">
     <button type="submit" class="btn btn-primary btn-lg">
-      👥 View All Staff
+      👥 View/Edit Staff
+    </button>
+  </form>
+  
+  <form action="registerUser.jsp" method="get">
+    <button type="submit" class="btn btn-primary btn-lg">
+      👥 Register Staff
     </button>
   </form>
 
-  <form action="salesReport" method="get">
+  <form action="viewSales" method="get">
     <button type="submit" class="btn btn-success btn-lg">
       📊 Sales Reports
     </button>

@@ -38,4 +38,28 @@ public class billService {
 	    return list;
 
 }
+	 public void deleteInvoice(int id) {
+		   
+		   Connection conn = null;
+		   PreparedStatement ps = null;
+
+		  
+		   try {
+		       conn = DBConnect.getConnection();
+		       String sql = "DELETE FROM billing WHERE id = ?";
+		       ps = conn.prepareStatement(sql);
+		       ps.setInt(1, id);
+		       ps.executeUpdate();
+		   } catch (Exception e) {
+		       e.printStackTrace();
+		   } finally {
+		       try {
+		           if (ps != null) ps.close();
+		           if (conn != null) conn.close();
+		       } catch (Exception e) {
+		           e.printStackTrace();
+		       }
+		   }
+		   }
+	   
 }

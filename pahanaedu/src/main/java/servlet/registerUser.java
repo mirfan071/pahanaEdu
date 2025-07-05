@@ -79,7 +79,7 @@ public class registerUser extends HttpServlet {
 	   	    userService service1 = new userService();
 		service1.regUser(user);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");  
+		RequestDispatcher dispatcher = request.getRequestDispatcher("registerUser.jsp");  
 		
 		dispatcher.forward(request, response);
 		

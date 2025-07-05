@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+		<%
+			String admin = (String) session.getAttribute("admin");
+			if (admin == null || !"admin".equalsIgnoreCase(admin)) {
+			response.sendRedirect("userLogin.jsp");
+			return;
+			}
+		%>
     
 <!DOCTYPE html>
 <html lang="en">
@@ -64,12 +71,18 @@
 			  </div>
 			<% } %>
 			
-          <div class="card-footer text-center">
-            <small>Already registered? <a href="userLogin.jsp">Login here</a></small>
-          </div>
         </div>
-      </div>
+        
+           <div class="mt-4 d-flex justify-content-center">
+		    <a href="adminPanel.jsp">
+		        <button class="btn btn-primary btn-lg">Back to Admin Panel</button>
+		    </a>
+		</div>
     </div>
+ </div>
+       
+    
+    
   </div>
 </body>
 </html>
