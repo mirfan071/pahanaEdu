@@ -49,7 +49,7 @@ public class updateUsers extends HttpServlet {
         userService service = new userService();
         service.updateUser(u);
 
-        response.sendRedirect("allUsers");
+        response.sendRedirect("allUsers?updated=true");
         
 	}
 

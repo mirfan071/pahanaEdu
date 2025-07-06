@@ -45,6 +45,12 @@
 				          <option value="Manager">Manager</option>
 				        </select>
 		     	 </div>
+		     	 
+		     	   <div class="form-group">
+				        <label for="password">Password</label>
+				        <input type="password" id="password" name="password" minlength="6" placeholder="leave blank if password not need to change"/>
+				   </div>
+		     	 
 
             <button type="submit" class="wide-button">Update</button>
         </form>

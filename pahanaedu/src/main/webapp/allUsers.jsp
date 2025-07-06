@@ -10,7 +10,17 @@
         alert("User deleted Sucessfully");
     </script>
 <%
-    }
+    } 
+%>
+<%
+    String updated = request.getParameter("updated");
+    if ("true".equals(updated)) {
+%>
+    <script>
+        alert("User details updated Sucessfully");
+    </script>
+<%
+    } 
 %>
 
 <!DOCTYPE html>
