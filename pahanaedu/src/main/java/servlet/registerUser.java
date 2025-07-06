@@ -41,7 +41,7 @@ public class registerUser extends HttpServlet {
 		String confirm = request.getParameter("confirm");
 		String role = request.getParameter("role");
 
-		// Check if passwords match
+		// Check either passwords match
 		
 		if (!password.equals(confirm)) {
 		    request.setAttribute("error", "Passwords do not match.");
@@ -76,11 +76,11 @@ public class registerUser extends HttpServlet {
 	   user.setRole(request.getParameter("role"));
 	   	   
 
-	   	    userService service1 = new userService();
+	   	userService service1 = new userService();
 		service1.regUser(user);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("registerUser.jsp");  
-		
+		request.getSession().setAttribute("message", "User added successfully.");
 		dispatcher.forward(request, response);
 		
 		     

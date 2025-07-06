@@ -50,6 +50,7 @@ public class updateUsers extends HttpServlet {
         service.updateUser(u);
 
         response.sendRedirect("allUsers");
+        
 	}
 
 }

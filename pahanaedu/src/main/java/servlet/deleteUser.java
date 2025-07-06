@@ -28,7 +28,8 @@ public class deleteUser extends HttpServlet {
 		    service.deleteUser(id);
 
 		    // Redirect back to user list after deletion
-		    response.sendRedirect("allUsers");
+		    response.sendRedirect("allUsers?deleted=true");
+
 	}
 
 	
